@@ -2,9 +2,10 @@ import express from "express";
 import cors from "cors";
 import router from "./routes/user.js";
 import mongoose from "mongoose";
+const PORT = process.env.PORT || 2000
 
 mongoose
-  .connect("mongodb://localhost:27017/auth")
+  .connect("mongodb+srv://UsmanBey:usman@usmanbey.okrmjxy.mongodb.net/auth?retryWrites=true&w=majority")
   .then((e) => console.log("MongoDB connected"));
 const app = express();
 app.use(cors());
@@ -18,4 +19,4 @@ app.get("*",(req,res)=>{
 
 app.use("/", router);
 
-app.listen(2000);
+app.listen(PORT);
